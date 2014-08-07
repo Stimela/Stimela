@@ -1,0 +1,15 @@
+# Example for measurement
+# data 
+# If a measurement is not 
+# available use NaN to make the
+# matrix complete
+#  
+# The data for the Ozone model
+#
+# should be filled as follows:
+#   position Ozone
+# e.g.
+#  1  0.5
+#  2 0.3
+
+

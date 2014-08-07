@@ -1,0 +1,637 @@
+Model {
+  Name			  "irocon_m"
+  Version		  5.2
+  SaveDefaultBlockParams  on
+  SampleTimeColors	  off
+  LibraryLinkDisplay	  "none"
+  WideLines		  off
+  ShowLineDimensions	  off
+  ShowPortDataTypes	  off
+  ShowLoopsOnError	  on
+  IgnoreBidirectionalLines off
+  ShowStorageClass	  off
+  SortedOrder		  off
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  covSaveCumulativeToWorkspaceVar on
+  CovSaveSingleToWorkspaceVar on
+  CovCumulativeVarName	  "covCumulativeData"
+  CovCumulativeReport	  off
+  DataTypeOverride	  "UseLocalSettings"
+  MinMaxOverflowLogging	  "UseLocalSettings"
+  MinMaxOverflowArchiveMode "Overwrite"
+  BlockNameDataTip	  off
+  BlockParametersDataTip  off
+  BlockDescriptionStringDataTip	on
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  BrowserLookUnderMasks	  off
+  Created		  "Fri Nov 19 16:17:08 1999"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "Harry"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Mon Dec 14 16:15:00 2009"
+  ModelVersionFormat	  "1.%<AutoIncrement:21>"
+  ConfigurationManager	  "none"
+  SimParamPage		  "Solver"
+  LinearizationMsg	  "none"
+  Profile		  off
+  ParamWorkspaceSource	  "MATLABWorkspace"
+  AccelSystemTargetFile	  "accel.tlc"
+  AccelTemplateMakefile	  "accel_default_tmf"
+  AccelMakeCommand	  "make_rtw"
+  TryForcingSFcnDF	  off
+  ExtModeMexFile	  "ext_comm"
+  ExtModeBatchMode	  off
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "oneshot"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  off
+  ExtModeSkipDownloadWhenConnect off
+  ExtModeLogAll		  on
+  ExtModeAutoUpdateStatusClock on
+  BufferReuse		  on
+  RTWExpressionDepthLimit 5
+  SimulationMode	  "normal"
+  Solver		  "ode23tb"
+  SolverMode		  "Auto"
+  StartTime		  "0.0"
+  StopTime		  "24*3600"
+  MaxOrder		  5
+  MaxStep		  "auto"
+  MinStep		  "auto"
+  MaxNumMinSteps	  "-1"
+  InitialStep		  "auto"
+  FixedStep		  "auto"
+  RelTol		  "1e-3"
+  AbsTol		  "auto"
+  OutputOption		  "RefineOutputTimes"
+  OutputTimes		  "[]"
+  Refine		  "1"
+  LoadExternalInput	  off
+  ExternalInput		  "[t, u]"
+  LoadInitialState	  off
+  InitialState		  "xInitial"
+  SaveTime		  on
+  TimeSaveName		  "tout"
+  SaveState		  off
+  StateSaveName		  "xout"
+  SaveOutput		  on
+  OutputSaveName	  "yout"
+  SaveFinalState	  off
+  FinalStateName	  "xFinal"
+  SaveFormat		  "Array"
+  Decimation		  "1"
+  LimitDataPoints	  off
+  MaxDataPoints		  "1000"
+  SignalLoggingName	  "sigsOut"
+  ConsistencyChecking	  "none"
+  ArrayBoundsChecking	  "none"
+  AlgebraicLoopMsg	  "warning"
+  BlockPriorityViolationMsg "warning"
+  MinStepSizeMsg	  "warning"
+  InheritedTsInSrcMsg	  "warning"
+  DiscreteInheritContinuousMsg "warning"
+  MultiTaskRateTransMsg	  "error"
+  SingleTaskRateTransMsg  "none"
+  CheckForMatrixSingularity "none"
+  IntegerOverflowMsg	  "warning"
+  Int32ToFloatConvMsg	  "warning"
+  ParameterDowncastMsg	  "error"
+  ParameterOverflowMsg	  "error"
+  ParameterPrecisionLossMsg "warning"
+  UnderSpecifiedDataTypeMsg "none"
+  UnnecessaryDatatypeConvMsg "none"
+  VectorMatrixConversionMsg "none"
+  InvalidFcnCallConnMsg	  "error"
+  SignalLabelMismatchMsg  "none"
+  UnconnectedInputMsg	  "warning"
+  UnconnectedOutputMsg	  "warning"
+  UnconnectedLineMsg	  "warning"
+  SfunCompatibilityCheckMsg "none"
+  RTWInlineParameters	  off
+  BlockReductionOpt	  on
+  BooleanDataType	  off
+  ConditionallyExecuteInputs on
+  ParameterPooling	  on
+  OptimizeBlockIOStorage  on
+  ZeroCross		  on
+  AssertionControl	  "UseLocalSettings"
+  ProdHWDeviceType	  "Microprocessor"
+  ProdHWWordLengths	  "8,16,32,32"
+  RTWSystemTargetFile	  "grt.tlc"
+  RTWTemplateMakefile	  "grt_default_tmf"
+  RTWMakeCommand	  "make_rtw"
+  RTWGenerateCodeOnly	  off
+  RTWRetainRTWFile	  off
+  TLCProfiler		  off
+  TLCDebug		  off
+  TLCCoverage		  off
+  TLCAssertion		  off
+  BlockDefaults {
+    Orientation		    "right"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+  }
+  BlockParameterDefaults {
+    Block {
+      BlockType		      Demux
+      Outputs		      "4"
+      DisplayOption	      "none"
+      BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      Inport
+      Port		      "1"
+      PortDimensions	      "-1"
+      ShowAdditionalParam     off
+      LatchInput	      off
+      DataType		      "auto"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Mux
+      Inputs		      "4"
+      DisplayOption	      "none"
+    }
+    Block {
+      BlockType		      Outport
+      Port		      "1"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      "S-Function"
+      FunctionName	      "system"
+      PortCounts	      "[]"
+      SFunctionModules	      "''"
+    }
+    Block {
+      BlockType		      SubSystem
+      ShowPortLabels	      on
+      Permissions	      "ReadWrite"
+      RTWSystemCode	      "Auto"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      SimViewingDevice	      off
+      DataTypeOverride	      "UseLocalSettings"
+      MinMaxOverflowLogging   "UseLocalSettings"
+    }
+    Block {
+      BlockType		      ToFile
+      Filename		      "untitled.mat"
+      MatrixName	      "ans"
+      Decimation	      "1"
+    }
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  System {
+    Name		    "irocon_m"
+    Location		    [567, 416, 1083, 778]
+    Open		    on
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    200
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    ZoomFactor		    "100"
+    ReportName		    "simulink-default.rpt"
+    Block {
+      BlockType		      SubSystem
+      Name		      "Graphical output"
+      Ports		      []
+      Position		      [245, 70, 285, 126]
+      OpenFcn		      "irocon_g"
+      ShowPortLabels	      off
+      TreatAsAtomicUnit	      off
+      MaskDisplay	      "plot(0,0,100,100,[80,20,20],[20,20,80],[80,69,60,52,45,39,33,28,24,20],[65,65,64,61,57,52,45,37,30,20])\ndisp('');\ntext(100,100,'irocon', 'horizontalAlignment', 'right', 'verticalAlignment', 'top');\n"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskIconUnits	      "autoscale"
+      System {
+	Name			"Graphical output"
+	Location		[8, 74, 1028, 752]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"A4"
+	PaperUnits		"centimeters"
+	ZoomFactor		"100"
+	Annotation {
+	  Name			  "plotten"
+	  Position		  [77, 57]
+	  VerticalAlignment	  "top"
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "irocon"
+      Description	      "This model calculates the removal of suspended solids with a single media filter."
+      Ports		      [2, 2]
+      Position		      [100, 51, 175, 149]
+      OpenFcn		      "filenaam='./Single_media_filter1.mat';                        \nst_ParameterInput('init',gcb,filenaam,'irocon');"
+      ShowPortLabels	      off
+      TreatAsAtomicUnit	      off
+      MaskInitialization      "filenaam='./Single_media_filter1.mat';\n\nerrstr = st_UniqName(filenaam,'filenaam=''','SubSystem','OpenFcn');\nif errstr, error([errstr 'The filename \"' filenaam '\" is already in use. Choose a different filename.']), end\n\nP = irocon_p(filenaam);\n[B,x0,U]=irocon_i(filenaam);\n"
+      MaskDisplay	      "plot(0,0,100,100,[25.000000,25.000000,75.000000,75.000000,87.500000],[75.000000,25.000000,25.000000,30.000000,30.000000],[87.500000,75.000000,75.000000],[37.500000,37.500000,75.000000],[25.000000,75.000000],[65.000000,65.000000])"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskIconUnits	      "autoscale"
+      System {
+	Name			"irocon"
+	Location		[60, 74, 618, 390]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"A4"
+	PaperUnits		"centimeters"
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "in_1"
+	  Position		  [10, 60, 30, 80]
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "in_2"
+	  Position		  [10, 100, 30, 120]
+	  Port			  "2"
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux"
+	  Ports			  [1, 2]
+	  Position		  [240, 56, 280, 89]
+	  Outputs		  "[U.Number B.Measurements]"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux"
+	  Ports			  [2, 1]
+	  Position		  [80, 61, 110, 94]
+	  Inputs		  "[U.Number B.Setpoints]"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "To File DHV1"
+	  Ports			  [1]
+	  Position		  [365, 15, 460, 35]
+	  TreatAsAtomicUnit	  off
+	  MaskType		  "To File DHV"
+	  MaskPromptString	  "Naam van bestand"
+	  MaskStyleString	  "edit"
+	  MaskTunableValueString  "on"
+	  MaskEnableString	  "on"
+	  MaskVisibilityString	  "on"
+	  MaskToolTipString	  "on"
+	  MaskVariables		  "naam=@1;"
+	  MaskInitialization	  "set_param([gcb '/To File'],'Filename',naam);"
+	  MaskDisplay		  "disp(naam)"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "port"
+	  MaskIconUnits		  "autoscale"
+	  MaskValueString	  "[filenaam(1:length(filenaam)-4) '_out.sti']"
+	  System {
+	    Name		    "To File DHV1"
+	    Location		    [216, 96, 404, 187]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "A4"
+	    PaperUnits		    "centimeters"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "In1"
+	      Position		      [15, 43, 45, 57]
+	    }
+	    Block {
+	      BlockType		      ToFile
+	      Name		      "To File"
+	      Position		      [85, 35, 145, 65]
+	      Filename		      "./irocon_p_out.sti"
+	      MatrixName	      "iroconout"
+	    }
+	    Line {
+	      SrcBlock		      "In1"
+	      SrcPort		      1
+	      DstBlock		      "To File"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "To File DHV2"
+	  Ports			  [1]
+	  Position		  [355, 150, 450, 170]
+	  TreatAsAtomicUnit	  off
+	  MaskType		  "To File DHV"
+	  MaskPromptString	  "Naam van bestand"
+	  MaskStyleString	  "edit"
+	  MaskTunableValueString  "on"
+	  MaskEnableString	  "on"
+	  MaskVisibilityString	  "on"
+	  MaskToolTipString	  "on"
+	  MaskVariables		  "naam=@1;"
+	  MaskInitialization	  "set_param([gcb '/To File'],'Filename',naam);"
+	  MaskDisplay		  "disp(naam)"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "port"
+	  MaskIconUnits		  "autoscale"
+	  MaskValueString	  "[filenaam(1:length(filenaam)-4) '_EM.sti']"
+	  System {
+	    Name		    "To File DHV2"
+	    Location		    [210, 94, 398, 185]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "A4"
+	    PaperUnits		    "centimeters"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "In1"
+	      Position		      [15, 43, 45, 57]
+	    }
+	    Block {
+	      BlockType		      ToFile
+	      Name		      "To File"
+	      Position		      [85, 35, 145, 65]
+	      Filename		      "./irocon_p_EM.sti"
+	      MatrixName	      "iroconEM"
+	    }
+	    Line {
+	      SrcBlock		      "In1"
+	      SrcPort		      1
+	      DstBlock		      "To File"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "To File DHV3"
+	  Ports			  [1]
+	  Position		  [75, 20, 170, 40]
+	  TreatAsAtomicUnit	  off
+	  MaskType		  "To File DHV"
+	  MaskPromptString	  "Naam van bestand"
+	  MaskStyleString	  "edit"
+	  MaskTunableValueString  "on"
+	  MaskEnableString	  "on"
+	  MaskVisibilityString	  "on"
+	  MaskToolTipString	  "on"
+	  MaskVariables		  "naam=@1;"
+	  MaskInitialization	  "set_param([gcb '/To File'],'Filename',naam);"
+	  MaskDisplay		  "disp(naam)"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "port"
+	  MaskIconUnits		  "autoscale"
+	  MaskValueString	  "[filenaam(1:length(filenaam)-4) '_in.sti']"
+	  System {
+	    Name		    "To File DHV3"
+	    Location		    [216, 96, 404, 187]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "A4"
+	    PaperUnits		    "centimeters"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "In1"
+	      Position		      [15, 43, 45, 57]
+	    }
+	    Block {
+	      BlockType		      ToFile
+	      Name		      "To File"
+	      Position		      [85, 35, 145, 65]
+	      Filename		      "./irocon_p_in.sti"
+	      MatrixName	      "iroconin"
+	    }
+	    Line {
+	      SrcBlock		      "In1"
+	      SrcPort		      1
+	      DstBlock		      "To File"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "To File DHV4"
+	  Ports			  [1]
+	  Position		  [65, 145, 160, 165]
+	  TreatAsAtomicUnit	  off
+	  MaskType		  "To File DHV"
+	  MaskPromptString	  "Naam van bestand"
+	  MaskStyleString	  "edit"
+	  MaskTunableValueString  "on"
+	  MaskEnableString	  "on"
+	  MaskVisibilityString	  "on"
+	  MaskToolTipString	  "on"
+	  MaskVariables		  "naam=@1;"
+	  MaskInitialization	  "set_param([gcb '/To File'],'Filename',naam);"
+	  MaskDisplay		  "disp(naam)"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "port"
+	  MaskIconUnits		  "autoscale"
+	  MaskValueString	  "[filenaam(1:length(filenaam)-4) '_ES.sti']"
+	  System {
+	    Name		    "To File DHV4"
+	    Location		    [216, 96, 404, 187]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "A4"
+	    PaperUnits		    "centimeters"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "In1"
+	      Position		      [15, 43, 45, 57]
+	    }
+	    Block {
+	      BlockType		      ToFile
+	      Name		      "To File"
+	      Position		      [85, 35, 145, 65]
+	      Filename		      "./irocon_p_ES.sti"
+	      MatrixName	      "iroconES"
+	    }
+	    Line {
+	      SrcBlock		      "In1"
+	      SrcPort		      1
+	      DstBlock		      "To File"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  "S-Function"
+	  Name			  "irocon"
+	  Ports			  [1, 1]
+	  Position		  [160, 70, 210, 90]
+	  FunctionName		  "irocon_s"
+	  Parameters		  "B,x0,U,P"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "out_1"
+	  Position		  [380, 65, 400, 85]
+	  InitialOutput		  "0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "out_2"
+	  Position		  [375, 100, 395, 120]
+	  Port			  "2"
+	  InitialOutput		  "0"
+	}
+	Line {
+	  SrcBlock		  "in_2"
+	  SrcPort		  1
+	  Points		  [10, 0]
+	  Branch {
+	    Points		    [0, 45]
+	    DstBlock		    "To File DHV4"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [5, 0; 0, -25]
+	    DstBlock		    "Mux"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  SrcBlock		  "Mux"
+	  SrcPort		  1
+	  DstBlock		  "irocon"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "in_1"
+	  SrcPort		  1
+	  Points		  [15, 0]
+	  Branch {
+	    Points		    [0, -40]
+	    DstBlock		    "To File DHV3"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Mux"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "irocon"
+	  SrcPort		  1
+	  Points		  [10, 0]
+	  DstBlock		  "Demux"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  1
+	  Points		  [0, -5; 15, 0]
+	  Branch {
+	    Points		    [0, -35]
+	    DstBlock		    "To File DHV1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [65, 0]
+	    DstBlock		    "out_1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  2
+	  Points		  [0, -5; 15, 0]
+	  Branch {
+	    Points		    [0, 85]
+	    DstBlock		    "To File DHV2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [60, 0]
+	    DstBlock		    "out_2"
+	    DstPort		    1
+	  }
+	}
+      }
+    }
+  }
+}

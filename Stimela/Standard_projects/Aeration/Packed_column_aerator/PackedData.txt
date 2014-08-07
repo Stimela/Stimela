@@ -1,0 +1,14 @@
+# Example for measurement
+# data 
+# If a measurement is not 
+# available use NaN to make the
+# matrix complete
+#  
+# The data for the Packed column aerator
+# should be filled as follows:
+#   Height Oxygen Methane Carbondioxide
+# e.g.
+#  1.1  4.3 2.2 110
+#  2.1  6.2 NaN  95
+
+

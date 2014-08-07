@@ -1,0 +1,14 @@
+# Example for measurement
+# data 
+# If a measurement is not 
+# available use NaN to make the
+# matrix complete
+#  
+# The data for the Vacuuum degassifier
+# should be filled as follows:
+#   height Oxygen Methane Carbondioxide
+# e.g.
+#  0.7  4.3 2.2 110
+#  1.1  6.2 NaN  95
+
+

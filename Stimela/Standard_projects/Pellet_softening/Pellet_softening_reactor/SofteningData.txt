@@ -1,0 +1,15 @@
+# Example for measurement
+# data 
+# If a measurement is not 
+# available use NaN to make the
+# matrix complete
+#  
+# The data for the softening
+# model
+# should be filled as follows:
+#   time(hours) Calcium pH
+# e.g.
+# 10 1   8.3
+# 20 0.8 8.2
+
+

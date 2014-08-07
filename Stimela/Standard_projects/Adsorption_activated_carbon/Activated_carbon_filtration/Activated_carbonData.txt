@@ -1,0 +1,15 @@
+# Example for measurement
+# data 
+# If a measurement is not 
+# available use NaN to make the
+# matrix complete
+#  
+# The data for the Activated Carbon model
+#
+# should be filled as follows:
+#   day DOC
+# e.g.
+#  10 1
+#  20 1.2
+
+
