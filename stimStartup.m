@@ -128,13 +128,18 @@ ok		= true;
 % check if My_models and My_projects are sub-directories
 pdData		= dir(pd);
 pdIndex		= [pdData.isdir];
-pds		= {pdData(pdIndex).name}';
+pds			= {pdData(pdIndex).name}';
 
-ind		= or(strcmpi(pds, 'My_models'), strcmpi(pds, 'My_projects'));
-if sum(ind) ~= 2
+if any(strcmpi(pds, 'My_models')) && ~any(strcmpi(pds, 'My_projects'))
+  [ok, msg, msgID] = mkdir(backupPd);
+  if ~ok
+	fprintf(2, 'Error while creating the project directory. %s: %s\n', msgID, msg);
+	fprintf(2, 'Stimela cannot be started!\n');
+  end
+elseif ~any(strcmpi(pds, 'My_models')) && ~any(strcmpi(pds, 'My_projects'))
   ok		= false;
-  fprintf(2,'Could not find the sub-directories "My_models" and "My_projects" in "%s"\n', pd)
-  fprintf(2,'Make sure your current directory is correct.\n', pd)
+  fprintf(2,'Could not find the sub-directories "My_models" and "My_projects" in "%s"\n', pd);
+  fprintf(2,'Make sure your current directory is correct.\n');
   return
 end
 
