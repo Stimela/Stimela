@@ -130,8 +130,11 @@ pdData		= dir(pd);
 pdIndex		= [pdData.isdir];
 pds			= {pdData(pdIndex).name}';
 
-if any(strcmpi(pds, 'My_models')) && ~any(strcmpi(pds, 'My_projects'))
-  [ok, msg, msgID] = mkdir(backupPd);
+myModelsPdInd = find(strcmpi(pds, 'My_models'));
+
+if ~isempty(myModelsPdInd) && numel(myModelsPdInd) == 1 && ~any(strcmpi(pds, 'My_projects'))
+  myProjectsPd = strrep(pds{myModelsPdInd}, 'My_models', 'My_projects');
+  [ok, msg, msgID] = mkdir(myProjectsPd);
   if ~ok
 	fprintf(2, 'Error while creating the project directory. %s: %s\n', msgID, msg);
 	fprintf(2, 'Stimela cannot be started!\n');
