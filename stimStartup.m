@@ -353,14 +353,21 @@ modelPd			= stimFolder('Main');
 filter			= '.mdl';
 mdlFls			= stimGetFiles('get', modelPd, filter);
 backupPd		= stimFolder('Backup');
+if ~isdir(backupPd)
+  [ok, msg, msgID] = mkdir(backupPd);
+  if ~ok
+	fprintf(2, 'Error while creating the backup directory. %s: %s\n', msgID, msg);
+	fprintf(2, 'Model files that are updated won''t be backuped!\n');
+  end
+end
 
 fprintf('Updating mdl files ...')
 notStatus		= com.mathworks.services.Prefs.getBooleanPref('SimulinkShowPersistentBackupNotification');
 com.mathworks.services.Prefs.setBooleanPref('SimulinkShowPersistentBackupNotification', false)
-%autoSaveOptionsOrg	= get_param(0, 'AutoSaveOptions');
-%autoSaveOptions		= autoSaveOptionsOrg;	
-%autoSaveOptions.SaveBackupOnVersionUpgrade = false;
-%set_param(0, 'AutoSaveOptions', autoSaveOptions);
+autoSaveOptionsOrg	= get_param(0, 'AutoSaveOptions');
+autoSaveOptions		= autoSaveOptionsOrg;	
+autoSaveOptions.SaveBackupOnVersionUpgrade = false;
+set_param(0, 'AutoSaveOptions', autoSaveOptions);
 newMdlError		= get_param(0, 'ErrorIfLoadNewModel');
 set_param(0, 'ErrorIfLoadNewModel', 'off')
 
@@ -368,7 +375,9 @@ extLength		= length('.mdl');
 for ii = 1:size(mdlFls,1)
   flNm		= fullfile(mdlFls{ii,1}, mdlFls{ii,2});
   backupFlNm	= fullfile(backupPd, [mdlFls{ii,2} '.backup']);
-  copyfile(flNm, backupFlNm, 'f') 
+  if isdir(backupPd)
+	copyfile(flNm, backupFlNm, 'f')
+  end
 
   fl		= mdlFls{ii,2};
   sysNm		= fl(1:end-extLength);
