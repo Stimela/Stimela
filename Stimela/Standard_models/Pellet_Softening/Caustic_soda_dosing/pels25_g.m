@@ -194,7 +194,7 @@ end
 %=============================STOP: KMS, 03/08/04=========================================
 
 xlabel(['Time (' dttxt ')'])
-Ylabel('Calcium (mmol/l)')
+ylabel('Calcium (mmol/l)')
 title(['Calcium concentration'])
 legend('Mixed effluent','Influent','TCCP*10',0)
 %axis([0 365 30 100])
