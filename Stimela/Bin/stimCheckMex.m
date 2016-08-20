@@ -44,17 +44,17 @@ if isempty(needRecompile) && ~forceCompile
   return
 end
 
-ok			= stimCheckMex_checkInstalledCompilers;
+ok = stimCheckMex_checkInstalledCompilers(needRecompile);
 if ~ok  
   return
 end
 
-modelNms		= needRecompile(:,1);
-modelPd			= stimFolder('Standard_models');
-exe			= '.c';
-cFiles			= stimGetFiles('get', modelPd, exe);
+modelNms = needRecompile(:,1);
+modelPd = stimFolder('Standard_models');
+exe = '.c';
+cFiles = stimGetFiles('get', modelPd, exe);
 
-canNotCompile		= stimCheckMex_compile(modelNms, cFiles);
+canNotCompile = stimCheckMex_compile(modelNms, cFiles);
 
 fprintf('Stimela mex check done\n')
 
@@ -78,7 +78,7 @@ for ii = 1:size(mdlFls, 1)
   fl		= mdlFls{ii, 2};
   fid		= fopen(fl, 'r');
   if fid < 3
-    fprintf(1, 'Could not open %s.\n', fl)
+    fprintf(1, 'Could not open %s.\n', fl);
     continue;
   end
   text		= fscanf(fid, '%s');
@@ -119,13 +119,13 @@ ok	= true;
 cc	= mex.getCompilerConfigurations('c++','installed');
 
 if isempty(cc)
-  fprintf(2, '\nStimela could not find the compilers needed to recompile the models!\n')
-  fprintf(2, 'For more information type "doc mex" in the command screen.\n')
-  fprintf(2, 'Warning: The following models won''t work:\n')
+  fprintf(2, '\nStimela could not find the compilers needed to recompile the models!\n');
+  fprintf(2, 'For more information type "doc mex" in the command screen.\n');
+  fprintf(2, 'Warning: The following models won''t work:\n');
   for ii = 1:size(needRecompile,1)
-    fprintf(2, '[%02d] %s\n', ii, needRecompile{ii,1})
+    fprintf(2, '[%02d] %s\n', ii, needRecompile{ii,1});
   end % for ii
-  fprintf(2, '\nReplace the s-functions to the matlab m file to let the models work.\n')
+  fprintf(2, '\nReplace the s-functions to the matlab m file to let the models work.\n');
   ok	= false;
   return
 end
@@ -153,10 +153,10 @@ for ii = 1:size(canCompile)
     canNotCompile{end+1, 1} = fl;
     canNotCompile{end  , 2} = src1;
     canNotCompile{end  , 3} = src2;
-    fprintf(2, 'failed\n')
+    fprintf(2, 'failed\n');
     continue
   end
-  fprintf(1, 'done\n')
+  fprintf(1, 'done\n');
 end % for ii
 
 
