@@ -119,11 +119,11 @@ TkDN2  = [0.0230;0.0192;0.0166;0.0151];
 TkDH2S = [4.6900;3.6500;2.8700;2.3000];  % De kDH2S bij 30 graden 2,3 is door mij verzonnen (geen literatuur waarde)
   
 %Berekening distributiecoëfficiënten voor tussenliggende temperaturen door lineaire interpolatie
-kDO2   = INTERP1Q(TkD,TkDO2, Tl);
-kDCH4  = INTERP1Q(TkD,TkDCH4,Tl);
-kDCO2  = INTERP1Q(TkD,TkDCO2,Tl);
-kDN2   = INTERP1Q(TkD,TkDN2, Tl);
-kDH2S  = INTERP1Q(TkD,TkDH2S,Tl);
+kDO2   = interp1q(TkD,TkDO2, Tl);
+kDCH4  = interp1q(TkD,TkDCH4,Tl);
+kDCO2  = interp1q(TkD,TkDCO2,Tl);
+kDN2   = interp1q(TkD,TkDN2, Tl);
+kDH2S  = interp1q(TkD,TkDH2S,Tl);
 
 %De verschillende evenwichtsconstanten (Temperatuur in Kelvin)
 T      = (Tl+273);

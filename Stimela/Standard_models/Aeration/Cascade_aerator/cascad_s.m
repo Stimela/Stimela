@@ -215,7 +215,7 @@ if any(abs(flag)==[1 2 3])
   
   %de concentraties in [mol/l] (met gebruik making van activiteiten):
   
-  coHCO3 = (coHCO3/MrHCO3); %*fi(1,4,EGVo);
+%   coHCO3 = (coHCO3/MrHCO3); %*fi(1,4,EGVo);
   
   %coCO2  = (10^(pK1-pHo+log10(coHCO3)));
   %coCO3  = (10^(-pK2+pHo+log10(coHCO3)));
@@ -297,10 +297,10 @@ if P.Vair ==0
   sys(3*NumCel+1:4*NumCel)=(cgoCH4-x(3*NumCel+1:4*NumCel))./TijdStap-((k2CH4*kDCH4)/RQeff)*x(3*NumCel+1:4*NumCel)+(k2CH4/RQeff)*x(2*NumCel+1:3*NumCel);
   
   sys(4*NumCel+1:5*NumCel)=MatQ1*[coCO2;x(4*NumCel+1:5*NumCel)]+k2CO2*kDCO2*x(5*NumCel+1:6*NumCel)-k2CO2*x(4*NumCel+1:5*NumCel); %+2*MatQ5*[pFe;x(8*NumCel+1:9*NumCel)]+MatQ5*[qCa;x(10*NumCel+1:11*NumCel)];
-  koolstofdioxide=sys(4*NumCel+1:5*NumCel);
-  deel1=MatQ1*[coCO2;x(4*NumCel+1:5*NumCel)];
+%   koolstofdioxide=sys(4*NumCel+1:5*NumCel);
+%   deel1=MatQ1*[coCO2;x(4*NumCel+1:5*NumCel)];
   sys(5*NumCel+1:6*NumCel)=(cgoCO2-x(5*NumCel+1:6*NumCel))./TijdStap-((k2CO2*kDCO2)/RQeff)*x(5*NumCel+1:6*NumCel)+(k2CO2/RQeff)*x(4*NumCel+1:5*NumCel);
-  koolstofdioxidegas=sys(5*NumCel+1:6*NumCel);
+%   koolstofdioxidegas=sys(5*NumCel+1:6*NumCel);
   
   sys(6*NumCel+1:7*NumCel)=MatQ1*[coMn;x(6*NumCel+1:7*NumCel)];
 
@@ -323,10 +323,10 @@ if P.Vair ==0
   sys(3*NumCel+1:4*NumCel)=(x(11*NumCel+2)-x(3*NumCel+1:4*NumCel))./TijdStap-((k2CH4*kDCH4)/RQeff)*x(3*NumCel+1:4*NumCel)+(k2CH4/RQeff)*x(2*NumCel+1:3*NumCel);
   
   sys(4*NumCel+1:5*NumCel)=MatQ1*[coCO2;x(4*NumCel+1:5*NumCel)]+k2CO2*kDCO2*x(5*NumCel+1:6*NumCel)-k2CO2*x(4*NumCel+1:5*NumCel); %+2*MatQ5*[pFe;x(8*NumCel+1:9*NumCel)]+MatQ5*[qCa;x(10*NumCel+1:11*NumCel)];
-  koolstofdioxide=sys(4*NumCel+1:5*NumCel);
-  deel1=MatQ1*[coCO2;x(4*NumCel+1:5*NumCel)];
+%   koolstofdioxide=sys(4*NumCel+1:5*NumCel);
+%   deel1=MatQ1*[coCO2;x(4*NumCel+1:5*NumCel)];
   sys(5*NumCel+1:6*NumCel)=(x(11*NumCel+3)-x(5*NumCel+1:6*NumCel))./TijdStap-((k2CO2*kDCO2)/RQeff)*x(5*NumCel+1:6*NumCel)+(k2CO2/RQeff)*x(4*NumCel+1:5*NumCel);
-  koolstofdioxidegas=sys(5*NumCel+1:6*NumCel);
+%   koolstofdioxidegas=sys(5*NumCel+1:6*NumCel);
   
   sys(6*NumCel+1:7*NumCel)=MatQ1*[coMn;x(6*NumCel+1:7*NumCel)];
 
@@ -478,6 +478,8 @@ elseif flag ==3, % output data determination
    sys(U.Number+1+13*(NumCel+1):U.Number+14*(NumCel+1))=MrH2S*[cgoH2S;x(10*NumCel+1:11*NumCel)];
    sys(U.Number+1+14*(NumCel+1):U.Number+15*(NumCel+1))=MrH2S*kDH2S*[cgoH2S;x(10*NumCel+1:11*NumCel)];
 
+   sys(U.Number+15*(NumCel+1)+1) = sys(11*NumCel+5);
+   
 %    %Verblijftijd voor C- en F-functies
 %    %sys(U.Number+1+9*(NumCel+1):U.Number+10*(NumCel+1))=[cStap;x(6*NumCel+1:7*NumCel)];
 %    sys(U.Number+1+15*(NumCel+1):U.Number+16*(NumCel+1))=MatQ3*[cStap;x(6*NumCel+1:7*NumCel);x(7*NumCel)]; %laatste term valt er gewoon uit

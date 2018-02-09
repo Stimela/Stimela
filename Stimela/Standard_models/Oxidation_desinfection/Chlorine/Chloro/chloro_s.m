@@ -27,10 +27,10 @@ if any(abs(flag)==[1 2 3])
   
   temp		= u(U.Temperature);	%[degree C]
   flow		= u(U.Flow);		%[m3/h]
-  pH		= u(U.pH);		%[-]
+  pH		= u(U.pH);		    %[-]
   giardia	= u(U.Giardia);		%[-]
   viruses	= u(U.Viruses);		%[-]
-  doc		= u(U.DOC);		%[mg/L]
+  doc		= u(U.DOC);		    %[mg/L]
   uv254		= u(U.UV254);		%[1/m]
   bromide	= u(U.Bromide);		%[mg/L]
   ammonia	= u(U.Ammonia);		%[mg/L]

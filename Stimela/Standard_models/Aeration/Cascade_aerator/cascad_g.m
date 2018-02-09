@@ -23,7 +23,7 @@ P = st_getPdata(naamfile, 'cascad');
 
 NumCel = P.NumCel;
 VBak   = P.VBak;
-QgTot  = P.QgTot;
+QgTot  = 0; % P.QgTot;
 RQ     = P.RQeff;
 %MeeTe  = P.MeeTe;
 k2     = P.k2CH4;

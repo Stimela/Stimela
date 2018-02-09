@@ -28,7 +28,7 @@ else
 end        % number of continous states
 B.DStates=0;        % number of discrete states
 B.Setpoints=1;      % number of extra setpoints
-B.Measurements= 15*(P.NumCel+1);  % number of extra measurements
+B.Measurements= 15*(P.NumCel+1)+1;  % number of extra measurements
 B.Direct=1;         % direct feedthrough (yes=1, no=0);
 B.SampleTime=0;     % SampleTime for discrete states (-1 = inherited)
 

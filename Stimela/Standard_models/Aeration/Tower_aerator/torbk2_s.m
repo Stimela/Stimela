@@ -141,11 +141,11 @@ if any(abs(flag)==[1 2 3])
   TkDH2S = [4.6900;3.6500;2.8700;2.3000];  % De kDH2S bij 30 graden 2,3 is door mij verzonnen (geen literatuur waarde)
   
   %Berekening distributiecoëfficiënten voor tussenliggende temperaturen door lineaire interpolatie
-  kDO2   = INTERP1Q(TkD,TkDO2, Tl);
-  kDCH4  = INTERP1Q(TkD,TkDCH4,Tl);
-  kDCO2  = INTERP1Q(TkD,TkDCO2,Tl);
-  kDN2   = INTERP1Q(TkD,TkDN2, Tl);
-  kDH2S  = INTERP1Q(TkD,TkDH2S,Tl);
+  kDO2   = interp1q(TkD,TkDO2, Tl);
+  kDCH4  = interp1q(TkD,TkDCH4,Tl);
+  kDCO2  = interp1q(TkD,TkDCO2,Tl);
+  kDN2   = interp1q(TkD,TkDN2, Tl);
+  kDH2S  = interp1q(TkD,TkDH2S,Tl);
   
   %Vergelijkingen voor de diffusiecoëfficiënten, best fit bij 10, 20 en 30 graden Celsius, bruikbaar van 0-40 Celsius
   DifO2  = 1/(9.048299e-1 - 1.961736e-2*Tl + 1.076824e-4*Tl^2)*1e-9;

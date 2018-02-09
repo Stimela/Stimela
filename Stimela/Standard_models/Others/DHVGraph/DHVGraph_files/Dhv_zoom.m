@@ -38,8 +38,8 @@ elseif stage ==1 & length(zb),
 
     user = get(zb,'userdata');
     if length(user)>0,
-      delete(real(user(3)));
-      set(zb,'userdata',[]);
+      delete(user{3});
+      set(zb,'userdata',{});
     end;
 
     point = get(ax,'currentpoint');
@@ -94,7 +94,9 @@ elseif stage ==1 & length(zb),
       h = line('xdata',xd, ...
               'ydata',yd, ...
               'color',[.5 .5 .5],'erasemode','xor');
-      user(1:3) = [point(2,1:2) h];
+      user{1} = point(2,1);
+      user{2} = point(2,2);
+      user{3} = h;
       set(zb,'userdata',user);
       set(fg,'windowbuttonmotionfcn',['Dhv_zoom(2,' num2str(ortho) ')'])
       set(fg,'windowbuttonupfcn',['Dhv_zoom(3,' num2str(ortho) ')'])
@@ -113,12 +115,12 @@ elseif stage ==2 & length(zb),
     if point(2,2)<ypre(1), point(2,2)=ypre(1);end;
     if point(2,2)>ypre(2), point(2,2)=ypre(2);end;
 
-    xd=  [real(usrdata(1)) point(2,1) point(2,1) real(usrdata(1)) real(usrdata(1))];
-    yd = [real(usrdata(2)) real(usrdata(2)) point(2,2) point(2,2) real(usrdata(2))];
+    xd=  [real(usrdata{1}) point(2,1) point(2,1) real(usrdata{1}) real(usrdata{1})];
+    yd = [real(usrdata{2}) real(usrdata{2}) point(2,2) point(2,2) real(usrdata{2})];
 
     if ortho==1
-      dx = real(usrdata(1))-point(2,1);
-      dy = real(usrdata(2))-point(2,2);
+      dx = real(usrdata{1})-point(2,1);
+      dy = real(usrdata{2})-point(2,2);
       if abs(dx/(xpre(2)-xpre(1))) > abs(dy/(ypre(2)-ypre(1)))
         yd=[ypre(2) ypre(2) ypre(1) ypre(1) ypre(2)];
       else
@@ -126,7 +128,7 @@ elseif stage ==2 & length(zb),
       end
     end
 
-    set(real(usrdata(3)),'Xdata',xd,'Ydata',yd);
+    set(usrdata{3},'Xdata',xd,'Ydata',yd);
 
   end
 elseif stage ==3 & length(zb),
@@ -148,8 +150,8 @@ elseif stage ==3 & length(zb),
     OKx=1;
     OKy=1;
     if ortho==1
-      dx = real(usrdata(1))-point(2,1);
-      dy = real(usrdata(2))-point(2,2);
+      dx = real(usrdata{1})-point(2,1);
+      dy = real(usrdata{2})-point(2,2);
       if abs(dx/(xpre(2)-xpre(1))) > abs(dy/(ypre(2)-ypre(1)))
         OKy=0;
       else
@@ -158,22 +160,22 @@ elseif stage ==3 & length(zb),
     end
 
     if (OKx)&(OKy)& ...
-         ( (point(2,1) == real(usrdata(1))) | (point(2,2) == real(usrdata(2))) )
+         ( (point(2,1) == real(usrdata{1})) | (point(2,2) == real(usrdata{2})) )
       OKx=0;
       OKy=0;
     end
 
-    if (OKx) & (point(2,1) ~= real(usrdata(1))),
-        set(ax,'xlim',sort([real(usrdata(1)) point(2,1)]));
+    if (OKx) & (point(2,1) ~= real(usrdata{1})),
+        set(ax,'xlim',sort([real(usrdata{1}) point(2,1)]));
         set(ax,'xlimmode','manual');
     end
-    if (OKy) & (point(2,2) ~= real(usrdata(2))),
-      set(ax,'ylim', sort([real(usrdata(2)) point(2,2)]));
+    if (OKy) & (point(2,2) ~= real(usrdata{2})),
+      set(ax,'ylim', sort([real(usrdata{2}) point(2,2)]));
       set(ax,'ylimmode','manual');
     end
 
-    set(Gcz,'userdata',[]);
-    delete(real(usrdata(3)))
+    set(Gcz,'userdata',{});
+    delete(usrdata{3})
   end;
 
   set(fg,'windowbuttonmotionfcn','')

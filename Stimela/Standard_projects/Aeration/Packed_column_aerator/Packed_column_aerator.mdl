@@ -1,7 +1,8 @@
 Model {
   Name			  "Packed_column_aerator"
-  Version		  7.9
+  Version		  8.5
   MdlSubVersion		  0
+  SavedCharacterEncoding  "windows-1252"
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
@@ -10,10 +11,8 @@ Model {
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
-  SavedCharacterEncoding  "windows-1252"
-  SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
-  OverrideScopeRefreshTime on
+  OverrideScopeRefreshTime off
   DisableAllScopes	  off
   DataTypeOverride	  "UseLocalSettings"
   DataTypeOverrideAppliesTo "AllNumericTypes"
@@ -21,13 +20,19 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
+  Object {
+    $PropName		    "BdWindowsInfo"
+    $ObjectID		    1
+    $ClassName		    "Simulink.BDWindowsInfo"
+    WindowsInfo		    []
+  }
   Created		  "Tue Oct 12 08:55:50 1999"
   Creator		  "psross"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "M.Sparnaaij"
+  LastModifiedBy	  "Martijn"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Oct 25 22:19:53 2012"
+  LastModifiedDate	  "Fri Feb 09 16:12:00 2018"
   RTWModifiedTimeStamp	  206460404
   ModelVersionFormat	  "1.%<AutoIncrement:80>"
   ConfigurationManager	  "none"
@@ -47,6 +52,7 @@ Model {
   SortedOrder		  off
   ExecutionContextIcon	  off
   ShowLinearizationAnnotations on
+  ShowMarkup		  on
   BlockNameDataTip	  off
   BlockParametersDataTip  off
   BlockDescriptionStringDataTip	on
@@ -55,6 +61,11 @@ Model {
   BrowserShowLibraryLinks off
   BrowserLookUnderMasks	  on
   SimulationMode	  "normal"
+  PauseTimes		  "5"
+  NumberOfSteps		  1
+  SnapshotBufferSize	  10
+  SnapshotInterval	  10
+  NumberOfLastSnapshots	  0
   LinearizationMsg	  "none"
   Profile		  off
   ParamWorkspaceSource	  "MATLABWorkspace"
@@ -62,6 +73,24 @@ Model {
   AccelTemplateMakefile	  "accel_default_tmf"
   AccelMakeCommand	  "make_rtw"
   TryForcingSFcnDF	  off
+  Object {
+    $PropName		    "DataLoggingOverride"
+    $ObjectID		    2
+    $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
+    model_		    "Packed_column_aerator"
+    Array {
+      Type		      "Cell"
+      Dimension		      1
+      Cell		      "Packed_column_aerator"
+      PropName		      "logAsSpecifiedByModels_"
+    }
+    Array {
+      Type		      "Cell"
+      Dimension		      1
+      Cell		      ""
+      PropName		      "logAsSpecifiedByModelsSSIDs_"
+    }
+  }
   RecordCoverage	  off
   CovPath		  "/"
   CovSaveName		  "covdata"
@@ -69,6 +98,7 @@ Model {
   CovNameIncrementing	  off
   CovHtmlReporting	  on
   CovForceBlockReductionOff on
+  CovEnableCumulative	  on
   covSaveCumulativeToWorkspaceVar on
   CovSaveSingleToWorkspaceVar on
   CovCumulativeVarName	  "covCumulativeData"
@@ -76,6 +106,12 @@ Model {
   CovReportOnPause	  on
   CovModelRefEnable	  "Off"
   CovExternalEMLEnable	  off
+  CovSFcnEnable		  on
+  CovBoundaryAbsTol	  0.000010
+  CovBoundaryRelTol	  0.010000
+  CovUseTimeInterval	  off
+  CovStartTime		  0
+  CovStopTime		  0
   ExtModeBatchMode	  off
   ExtModeEnableFloating	  on
   ExtModeTrigType	  "manual"
@@ -97,21 +133,20 @@ Model {
   ExtModeSkipDownloadWhenConnect off
   ExtModeLogAll		  on
   ExtModeAutoUpdateStatusClock on
-  BufferReuse		  on
   ShowModelReferenceBlockVersion off
   ShowModelReferenceBlockIO off
   Array {
     Type		    "Handle"
     Dimension		    1
     Simulink.ConfigSet {
-      $ObjectID		      1
-      Version		      "1.12.0"
+      $ObjectID		      3
+      Version		      "1.15.0"
       Array {
 	Type			"Handle"
 	Dimension		8
 	Simulink.SolverCC {
-	  $ObjectID		  2
-	  Version		  "1.12.0"
+	  $ObjectID		  4
+	  Version		  "1.15.0"
 	  StartTime		  "0.0"
 	  StopTime		  "24*3600"
 	  AbsTol		  "1e-5"
@@ -145,8 +180,8 @@ Model {
 	  InsertRTBMode		  "Whenever possible"
 	}
 	Simulink.DataIOCC {
-	  $ObjectID		  3
-	  Version		  "1.12.0"
+	  $ObjectID		  5
+	  Version		  "1.15.0"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
 	  FinalStateName	  "xFinal"
@@ -164,6 +199,7 @@ Model {
 	  SignalLogging		  on
 	  DSMLogging		  on
 	  InspectSignalLogs	  off
+	  VisualizeSimOutput	  on
 	  SaveTime		  off
 	  ReturnWorkspaceOutputs  off
 	  StateSaveName		  "xout"
@@ -177,8 +213,8 @@ Model {
 	  Refine		  "1"
 	}
 	Simulink.OptimizationCC {
-	  $ObjectID		  4
-	  Version		  "1.12.0"
+	  $ObjectID		  6
+	  Version		  "1.15.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    7
@@ -195,13 +231,16 @@ Model {
 	  BooleanDataType	  off
 	  ConditionallyExecuteInputs on
 	  InlineParams		  off
-	  UseIntDivNetSlope	  off
+	  UseDivisionForNetSlopeComputation "off"
 	  UseFloatMulNetSlope	  off
+	  DefaultUnderspecifiedDataType	"double"
 	  UseSpecifiedMinMax	  off
 	  InlineInvariantSignals  off
 	  OptimizeBlockIOStorage  on
 	  BufferReuse		  on
 	  EnhancedBackFolding	  off
+	  CachingGlobalReferences off
+	  GlobalBufferReuse	  on
 	  StrengthReduction	  off
 	  ExpressionFolding	  on
 	  BooleansAsBitfields	  off
@@ -209,14 +248,13 @@ Model {
 	  EnableMemcpy		  on
 	  MemcpyThreshold	  64
 	  PassReuseOutputArgsAs	  "Structure reference"
+	  PassReuseOutputArgsThreshold 12
 	  ExpressionDepthLimit	  2147483647
-	  FoldNonRolledExpr	  on
 	  LocalBlockOutputs	  on
 	  RollThreshold		  5
-	  SystemCodeInlineAuto	  off
 	  StateBitsets		  off
 	  DataBitsets		  off
-	  UseTempVars		  off
+	  ActiveStateOutputEnumStorageType "Native Integer"
 	  ZeroExternalMemoryAtStartup on
 	  ZeroInternalMemoryAtStartup on
 	  InitFltsAndDblsToZero	  off
@@ -227,13 +265,12 @@ Model {
 	  LifeSpan		  "inf"
 	  MaxStackSize		  "Inherit from target"
 	  BufferReusableBoundary  on
-	  SimCompilerOptimization "Off"
+	  SimCompilerOptimization "off"
 	  AccelVerboseBuild	  off
-	  ParallelExecutionInRapidAccelerator on
 	}
 	Simulink.DebuggingCC {
-	  $ObjectID		  5
-	  Version		  "1.12.0"
+	  $ObjectID		  7
+	  Version		  "1.15.0"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
 	  ArrayBoundsChecking	  "none"
@@ -282,23 +319,21 @@ Model {
 	  UnnecessaryDatatypeConvMsg "none"
 	  VectorMatrixConversionMsg "none"
 	  InvalidFcnCallConnMsg	  "error"
-	  FcnCallInpInsideContextMsg "Use local settings"
+	  FcnCallInpInsideContextMsg "UseLocalSettings"
 	  SignalLabelMismatchMsg  "none"
 	  UnconnectedInputMsg	  "warning"
 	  UnconnectedOutputMsg	  "warning"
 	  UnconnectedLineMsg	  "warning"
 	  SFcnCompatibilityMsg	  "none"
-	  FrameProcessingCompatibilityMsg "warning"
+	  FrameProcessingCompatibilityMsg "error"
 	  UniqueDataStoreMsg	  "none"
 	  BusObjectLabelMismatch  "warning"
 	  RootOutportRequireBusObject "warning"
 	  AssertControl		  "UseLocalSettings"
-	  EnableOverflowDetection off
 	  ModelReferenceIOMsg	  "none"
 	  ModelReferenceMultiInstanceNormalModeStructChecksumCheck "error"
 	  ModelReferenceVersionMismatchMessage "none"
 	  ModelReferenceIOMismatchMessage "none"
-	  ModelReferenceCSMismatchMessage "none"
 	  UnknownTsInhSupMsg	  "warning"
 	  ModelReferenceDataLoggingMessage "warning"
 	  ModelReferenceSymbolNameMessage "warning"
@@ -310,7 +345,6 @@ Model {
 	  StrictBusMsg		  "None"
 	  BusNameAdapt		  "WarnAndRepair"
 	  NonBusSignalsTreatedAsBus "none"
-	  LoggingUnavailableSignals "error"
 	  BlockIODiagnostic	  "none"
 	  SFUnusedDataAndEventsDiag "warning"
 	  SFUnexpectedBacktrackingDiag "warning"
@@ -318,14 +352,19 @@ Model {
 	  SFNoUnconditionalDefaultTransitionDiag "warning"
 	  SFTransitionOutsideNaturalParentDiag "warning"
 	  SFUnconditionalTransitionShadowingDiag "warning"
+	  SFUndirectedBroadcastEventsDiag "warning"
+	  SFTransitionActionBeforeConditionDiag	"warning"
+	  SFOutputUsedAsStateInMooreChartDiag "error"
+	  IntegerSaturationMsg	  "warning"
 	}
 	Simulink.HardwareCC {
-	  $ObjectID		  6
-	  Version		  "1.12.0"
+	  $ObjectID		  8
+	  Version		  "1.15.0"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
 	  ProdBitPerInt		  32
 	  ProdBitPerLong	  32
+	  ProdBitPerLongLong	  64
 	  ProdBitPerFloat	  32
 	  ProdBitPerDouble	  64
 	  ProdBitPerPointer	  32
@@ -335,21 +374,23 @@ Model {
 	  ProdEndianess		  "Unspecified"
 	  ProdWordSize		  32
 	  ProdShiftRightIntArith  on
+	  ProdLongLongMode	  off
 	  ProdHWDeviceType	  "32-bit Generic"
 	  TargetBitPerChar	  8
 	  TargetBitPerShort	  16
 	  TargetBitPerInt	  32
 	  TargetBitPerLong	  32
+	  TargetBitPerLongLong	  64
 	  TargetBitPerFloat	  32
 	  TargetBitPerDouble	  64
 	  TargetBitPerPointer	  32
 	  TargetLargestAtomicInteger "Char"
 	  TargetLargestAtomicFloat "None"
 	  TargetShiftRightIntArith on
+	  TargetLongLongMode	  off
 	  TargetIntDivRoundTo	  "Undefined"
 	  TargetEndianess	  "Unspecified"
 	  TargetWordSize	  32
-	  TargetTypeEmulationWarnSuppressLevel 0
 	  TargetPreprocMaxBitsSint 32
 	  TargetPreprocMaxBitsUint 32
 	  TargetHWDeviceType	  "Specified"
@@ -357,8 +398,8 @@ Model {
 	  ProdEqTarget		  on
 	}
 	Simulink.ModelReferenceCC {
-	  $ObjectID		  7
-	  Version		  "1.12.0"
+	  $ObjectID		  9
+	  Version		  "1.15.0"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
 	  CheckModelReferenceTargetMessage "error"
 	  EnableParallelModelReferenceBuilds off
@@ -372,23 +413,21 @@ Model {
 	  SupportModelReferenceSimTargetCustomCode off
 	}
 	Simulink.SFSimCC {
-	  $ObjectID		  8
-	  Version		  "1.12.0"
-	  SFSimEnableDebug	  on
+	  $ObjectID		  10
+	  Version		  "1.15.0"
 	  SFSimOverflowDetection  on
 	  SFSimEcho		  on
-	  SimBlas		  on
 	  SimCtrlC		  on
-	  SimExtrinsic		  on
 	  SimIntegrity		  on
 	  SimUseLocalCustomCode	  off
 	  SimParseCustomCode	  on
 	  SimBuildMode		  "sf_incremental_build"
+	  SimGenImportedTypeDefs  off
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
-	  $ObjectID		  9
-	  Version		  "1.12.0"
+	  $ObjectID		  11
+	  Version		  "1.15.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    6
@@ -401,10 +440,15 @@ Model {
 	    PropName		    "DisabledProps"
 	  }
 	  SystemTargetFile	  "grt.tlc"
+	  TLCOptions		  ""
 	  GenCodeOnly		  off
 	  MakeCommand		  "make_rtw"
 	  GenerateMakefile	  on
+	  PackageGeneratedCodeAndArtifacts off
+	  PackageName		  ""
 	  TemplateMakefile	  "grt_default_tmf"
+	  PostCodeGenCommand	  ""
+	  Description		  ""
 	  GenerateReport	  off
 	  SaveLog		  off
 	  RTWVerbose		  on
@@ -413,34 +457,47 @@ Model {
 	  TLCDebug		  off
 	  TLCCoverage		  off
 	  TLCAssert		  off
-	  ProcessScriptMode	  "Default"
-	  ConfigurationMode	  "Optimized"
-	  ConfigAtBuild		  off
 	  RTWUseLocalCustomCode	  off
 	  RTWUseSimCustomCode	  off
+	  CustomSourceCode	  ""
+	  CustomHeaderCode	  ""
+	  CustomInclude		  ""
+	  CustomSource		  ""
+	  CustomLibrary		  ""
+	  CustomInitializer	  ""
+	  CustomTerminator	  ""
+	  Toolchain		  "Automatically locate an installed toolchain"
+	  BuildConfiguration	  "Faster Builds"
 	  IncludeHyperlinkInReport off
 	  LaunchReport		  off
+	  PortableWordSizes	  off
+	  CreateSILPILBlock	  "None"
+	  CodeExecutionProfiling  off
+	  CodeExecutionProfileVariable "executionProfile"
+	  CodeProfilingSaveOptions "SummaryOnly"
+	  CodeProfilingInstrumentation off
+	  SILDebugging		  off
 	  TargetLang		  "C"
 	  IncludeBusHierarchyInRTWFileBlockHierarchyMap	off
-	  IncludeERTFirstTime	  on
 	  GenerateTraceInfo	  off
 	  GenerateTraceReport	  off
 	  GenerateTraceReportSl	  off
 	  GenerateTraceReportSf	  off
 	  GenerateTraceReportEml  off
-	  GenerateCodeInfo	  off
 	  GenerateWebview	  off
 	  GenerateCodeMetricsReport off
 	  GenerateCodeReplacementReport	off
-	  RTWCompilerOptimization "Off"
+	  GenerateMissedCodeReplacementReport off
+	  RTWCompilerOptimization "off"
+	  RTWCustomCompilerOptimizations ""
 	  CheckMdlBeforeBuild	  "Off"
-	  CustomRebuildMode	  "OnUpdate"
+	  SharedConstantsCachingThreshold 1024
 	  Array {
 	    Type		    "Handle"
 	    Dimension		    2
 	    Simulink.CodeAppCC {
-	      $ObjectID		      10
-	      Version		      "1.12.0"
+	      $ObjectID		      12
+	      Version		      "1.15.0"
 	      Array {
 		Type			"Cell"
 		Dimension		19
@@ -467,6 +524,7 @@ Model {
 	      }
 	      ForceParamTrailComments off
 	      GenerateComments	      on
+	      CommentStyle	      "Auto"
 	      IgnoreCustomStorageClasses on
 	      IgnoreTestpoints	      off
 	      IncHierarchyInIds	      off
@@ -474,6 +532,7 @@ Model {
 	      PreserveName	      off
 	      PreserveNameWithParent  off
 	      ShowEliminatedStatement off
+	      OperatorAnnotations     off
 	      IncAutoGenComments      off
 	      SimulinkDataObjDesc     off
 	      SFDataObjDesc	      off
@@ -481,13 +540,14 @@ Model {
 	      IncDataTypeInIds	      off
 	      MangleLength	      1
 	      CustomSymbolStrGlobalVar "$R$N$M"
-	      CustomSymbolStrType     "$N$R$M"
+	      CustomSymbolStrType     "$N$R$M_T"
 	      CustomSymbolStrField    "$N$M"
 	      CustomSymbolStrFcn      "$R$N$M$F"
 	      CustomSymbolStrFcnArg   "rt$I$N$M"
 	      CustomSymbolStrBlkIO    "rtb_$N$M"
 	      CustomSymbolStrTmpVar   "$N$M"
 	      CustomSymbolStrMacro    "$R$N$M"
+	      CustomSymbolStrUtil     "$N$C"
 	      DefineNamingRule	      "None"
 	      ParamNamingRule	      "None"
 	      SignalNamingRule	      "None"
@@ -496,48 +556,49 @@ Model {
 	      SimulinkBlockComments   on
 	      MATLABSourceComments    off
 	      EnableCustomComments    off
+	      InternalIdentifier      "Shortened"
 	      InlinedPrmAccess	      "Literals"
 	      ReqsInCode	      off
 	      UseSimReservedNames     off
 	    }
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
-	      $ObjectID		      11
-	      Version		      "1.12.0"
+	      $ObjectID		      13
+	      Version		      "1.15.0"
 	      Array {
 		Type			"Cell"
-		Dimension		16
+		Dimension		15
 		Cell			"GeneratePreprocessorConditionals"
 		Cell			"IncludeMdlTerminateFcn"
-		Cell			"CombineOutputUpdateFcns"
+		Cell			"GenerateAllocFcn"
 		Cell			"SuppressErrorStatus"
 		Cell			"ERTCustomFileBanners"
 		Cell			"GenerateSampleERTMain"
 		Cell			"GenerateTestInterfaces"
 		Cell			"ModelStepFunctionPrototypeControlCompliant"
 		Cell			"CPPClassGenCompliant"
-		Cell			"MultiInstanceERTCode"
+		Cell			"SupportNonInlinedSFcns"
 		Cell			"PurelyIntegerCode"
 		Cell			"PortableWordSizes"
 		Cell			"SupportComplex"
 		Cell			"SupportAbsoluteTime"
 		Cell			"SupportContinuousTime"
-		Cell			"SupportNonInlinedSFcns"
 		PropName		"DisabledProps"
 	      }
 	      TargetFcnLib	      "ansi_tfl_table_tmw.mat"
 	      TargetLibSuffix	      ""
 	      TargetPreCompLibLocation ""
-	      CodeReplacementLibrary  "ANSI_C"
+	      GenFloatMathFcnCalls    "NOT IN USE"
+	      TargetLangStandard      "C89/C90 (ANSI)"
+	      CodeReplacementLibrary  "None"
 	      UtilityFuncGeneration   "Auto"
 	      ERTMultiwordTypeDef     "System defined"
-	      CodeExecutionProfiling  off
 	      ERTMultiwordLength      256
 	      MultiwordLength	      2048
 	      GenerateFullHeader      on
+	      InferredTypesCompatibility off
 	      GenerateSampleERTMain   off
 	      GenerateTestInterfaces  off
-	      IsPILTarget	      off
 	      ModelReferenceCompliant on
 	      ParMdlRefBuildCompliant on
 	      CompOptLevelCompliant   on
@@ -554,19 +615,22 @@ Model {
 	      LogVarNameModifier      "rt_"
 	      MatFileLogging	      on
 	      MultiInstanceERTCode    off
+	      CodeInterfacePackaging  "Nonreusable function"
 	      SupportNonFinite	      on
 	      SupportComplex	      on
 	      PurelyIntegerCode	      off
 	      SupportContinuousTime   on
 	      SupportNonInlinedSFcns  on
 	      SupportVariableSizeSignals off
-	      EnableShiftOperators    on
 	      ParenthesesLevel	      "Nominal"
-	      PortableWordSizes	      off
+	      CastingMode	      "Nominal"
+	      MATLABClassNameForMDSCustomization "Simulink.SoftwareTarget.GRTCustomization"
 	      ModelStepFunctionPrototypeControlCompliant off
-	      CPPClassGenCompliant    off
+	      CPPClassGenCompliant    on
 	      AutosarCompliant	      off
 	      GRTInterface	      on
+	      GenerateAllocFcn	      off
+	      GenerateSharedConstants on
 	      UseMalloc		      off
 	      ExtMode		      off
 	      ExtModeStaticAlloc      off
@@ -580,6 +644,7 @@ Model {
 	      RTWCAPIStates	      off
 	      RTWCAPIRootIO	      off
 	      GenerateASAP2	      off
+	      MultiInstanceErrorCode  "Error"
 	    }
 	    PropName		    "Components"
 	  }
@@ -594,7 +659,17 @@ Model {
   }
   Simulink.ConfigSet {
     $PropName		    "ActiveConfigurationSet"
-    $ObjectID		    1
+    $ObjectID		    3
+  }
+  Object {
+    $PropName		    "DataTransfer"
+    $ObjectID		    14
+    $ClassName		    "Simulink.GlobalDataTransfer"
+    DefaultTransitionBetweenSyncTasks "Ensure deterministic transfer (maximum delay)"
+    DefaultTransitionBetweenAsyncTasks "Ensure data integrity only"
+    DefaultTransitionBetweenContTasks "Ensure deterministic transfer (minimum delay)"
+    DefaultExtrapolationMethodBetweenContTasks "None"
+    AutoInsertRateTranBlk   [0]
   }
   ExplicitPartitioning	  off
   BlockDefaults {
@@ -627,6 +702,25 @@ Model {
     FontSize		    9
     FontWeight		    "normal"
     FontAngle		    "normal"
+  }
+  MaskDefaults {
+    SelfModifiable	    "off"
+    IconFrame		    "on"
+    IconOpaque		    "on"
+    RunInitForIconRedraw    "off"
+    IconRotate		    "none"
+    PortRotate		    "default"
+    IconUnits		    "autoscale"
+  }
+  MaskParameterDefaults {
+    Evaluate		    "on"
+    Tunable		    "on"
+    NeverSave		    "off"
+    Internal		    "off"
+    ReadOnly		    "off"
+    Enabled		    "on"
+    Visible		    "on"
+    ToolTip		    "on"
   }
   BlockParameterDefaults {
     Block {
@@ -697,6 +791,7 @@ Model {
       SFunctionModules	      "''"
       PortCounts	      "[]"
       SFunctionDeploymentMode off
+      EnableBusSupport	      off
     }
     Block {
       BlockType		      SubSystem
@@ -704,10 +799,15 @@ Model {
       Permissions	      "ReadWrite"
       PermitHierarchicalResolution "All"
       TreatAsAtomicUnit	      off
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
       CheckFcnCallInpInsideContextMsg off
       SystemSampleTime	      "-1"
+      RTWSystemCode	      "Auto"
       RTWFcnNameOpts	      "Auto"
       RTWFileNameOpts	      "Auto"
+      FunctionInterfaceSpec   "void_void"
+      FunctionWithSeparateData off
       RTWMemSecFuncInitTerm   "Inherit from model"
       RTWMemSecFuncExecute    "Inherit from model"
       RTWMemSecDataConstants  "Inherit from model"
@@ -717,9 +817,13 @@ Model {
       DataTypeOverride	      "UseLocalSettings"
       DataTypeOverrideAppliesTo	"AllNumericTypes"
       MinMaxOverflowLogging   "UseLocalSettings"
+      Opaque		      off
+      MaskHideContents	      off
       SFBlockType	      "NONE"
       Variant		      off
       GeneratePreprocessorConditionals off
+      ContentPreviewEnabled   off
+      IsWebBlock	      off
     }
     Block {
       BlockType		      ToFile
@@ -732,7 +836,7 @@ Model {
   }
   System {
     Name		    "Packed_column_aerator"
-    Location		    [534, 254, 1130, 624]
+    Location		    [504, 142, 1156, 696]
     Open		    off
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -752,6 +856,7 @@ Model {
       Name		      "Fresh air flow"
       SID		      "52"
       Position		      [190, 265, 220, 295]
+      ZOrder		      -1
       Value		      "800"
     }
     Block {
@@ -760,24 +865,20 @@ Model {
       SID		      "161"
       Ports		      []
       Position		      [480, 265, 520, 321]
+      ZOrder		      -2
       OpenFcn		      "torbk2_g"
       ShowPortLabels	      "none"
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      RTWSystemCode	      "Auto"
-      FunctionWithSeparateData off
-      Opaque		      off
       RequestExecContextInheritance off
-      MaskHideContents	      off
-      MaskDisplay	      "plot(0,0,100,100,[80,20,20],[20,20,80],[80,69,60,52,45,39,33,28,24,20],[65,65,64,61,57,52,45,37,30,20])\ndisp('');\ntext(100,100,'torbk2', 'horizontalAlignment', 'right', 'verticalAlignment', 'top');\n"
-      MaskIconFrame	      on
-      MaskIconOpaque	      on
-      MaskIconRotate	      "none"
-      MaskPortRotate	      "default"
-      MaskIconUnits	      "autoscale"
+      Object {
+	$PropName		"MaskObject"
+	$ObjectID		15
+	$ClassName		"Simulink.Mask"
+	Display			"plot(0,0,100,100,[80,20,20],[20,20,80],[80,69,60,52,45,39,33,28,24,20],[65,65,64,61,57,52,45,37,30,20])\nd"
+	"isp('');\ntext(100,100,'torbk2', 'horizontalAlignment', 'right', 'verticalAlignment', 'top');\n"
+      }
       System {
 	Name			"Graphical output\npacked column aerator"
-	Location		[8, 74, 1028, 752]
+	Location		[16, 52, 1092, 914]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -793,8 +894,12 @@ Model {
 	Annotation {
 	  SID			  "188"
 	  Name			  "plotten"
-	  Position		  [77, 57]
+	  Position		  [77, 59, 112, 74]
+	  InternalMargins	  [0, 0, 0, 0]
+	  FixedHeight		  off
+	  FixedWidth		  off
 	  VerticalAlignment	  "top"
+	  ZOrder		  -1
 	}
       }
     }
@@ -802,28 +907,33 @@ Model {
       BlockType		      SubSystem
       Name		      "Packed column aerator"
       SID		      "162"
-      Description	      "This model calculates the aeration and degassifying with a packed column aerator. The influent carbon dioxide concentration is calculated on the basis of the bicarbonate concentration, the pH, the EGV and the water temperature, so these parameters must always be filled out in the 'Water quality parameters' block."
+      Description	      "This model calculates the aeration and degassifying with a packed column aerator. The influen"
+      "t carbon dioxide concentration is calculated on the basis of the bicarbonate concentration, the pH, the EGV and "
+      "the water temperature, so these parameters must always be filled out in the 'Water quality parameters' block."
       Ports		      [2, 2]
       Position		      [305, 177, 375, 293]
-      OpenFcn		      "filenaam='./StimelaData/Packed_column_aerator.mat';                        \nst_ParameterInput('init',gcb,filenaam,'torbk2');"
+      ZOrder		      -3
+      OpenFcn		      "filenaam='./StimelaData/Packed_column_aerator.mat';                        \nst_ParameterInput('"
+      "init',gcb,filenaam,'torbk2');"
       ShowPortLabels	      "none"
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      RTWSystemCode	      "Auto"
-      FunctionWithSeparateData off
-      Opaque		      off
       RequestExecContextInheritance off
-      MaskHideContents	      off
-      MaskInitialization      "filenaam='./StimelaData/Packed_column_aerator.mat';\n\n[Pn,Fn,Fext]=Fileprop(filenaam);\n\nerrstr = st_UniqName(filenaam,'filenaam=''','SubSystem','OpenFcn');\nif errstr, error([errstr 'The filename \"' filenaam '\" is already in use. Choose a different filename.']), end\n\nP = torbk2_p(filenaam);\n[B,x0,U]=torbk2_i(filenaam);\n"
-      MaskDisplay	      "plot(0,0,100,100,[20,20],[20,80],[80,80],[20,80],[20,80,20,80,20],[30,70,70,30,30],[80,20],[28,28],[50,44,34,27,23,20],[90,90,89,87,84,80],[50,44,34,27,23,20],[10,10,11,13,16,20],[50,56,66,73,77,80],[90,90,89,87,84,80],[50,56,66,73,77,80],[10,10,11,13,16,20],[21,20],[82,80],[10,50,50,10],[82,82,80,80],[58,50,42],[76,80,76],[50,35,45,45],[99,94,94,90],[50,65,55,55],[99,94,94,90],[45,45],[3,10],[55,55],[3,10])\ndisp('')\ntext(50,50,'torbk2', 'horizontalAlignment', 'center', 'verticalAlignment', 'middle');\ntext(50,0,Fn, 'horizontalAlignment', 'center', 'verticalAlignment', 'base');"
-      MaskIconFrame	      on
-      MaskIconOpaque	      on
-      MaskIconRotate	      "none"
-      MaskPortRotate	      "default"
-      MaskIconUnits	      "autoscale"
+      Object {
+	$PropName		"MaskObject"
+	$ObjectID		16
+	$ClassName		"Simulink.Mask"
+	Initialization		"filenaam='./StimelaData/Packed_column_aerator.mat';\n\n[Pn,Fn,Fext]=Fileprop(filenaam);\n\nerrstr = "
+	"st_UniqName(filenaam,'filenaam=''','SubSystem','OpenFcn');\nif errstr, error([errstr 'The filename \"' filenaam '\" i"
+	"s already in use. Choose a different filename.']), end\n\nP = torbk2_p(filenaam);\n[B,x0,U]=torbk2_i(filenaam);\n"
+	Display			"plot(0,0,100,100,[20,20],[20,80],[80,80],[20,80],[20,80,20,80,20],[30,70,70,30,30],[80,20],[28,28],[50,44,"
+	"34,27,23,20],[90,90,89,87,84,80],[50,44,34,27,23,20],[10,10,11,13,16,20],[50,56,66,73,77,80],[90,90,89,87,84,80],[50,"
+	"56,66,73,77,80],[10,10,11,13,16,20],[21,20],[82,80],[10,50,50,10],[82,82,80,80],[58,50,42],[76,80,76],[50,35,45,45],["
+	"99,94,94,90],[50,65,55,55],[99,94,94,90],[45,45],[3,10],[55,55],[3,10])\ndisp('')\ntext(50,50,'torbk2', 'horizontalAl"
+	"ignment', 'center', 'verticalAlignment', 'middle');\ntext(50,0,Fn, 'horizontalAlignment', 'center', 'verticalAlignmen"
+	"t', 'base');"
+      }
       System {
 	Name			"Packed column aerator"
-	Location		[60, 74, 641, 480]
+	Location		[30, 52, 667, 642]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -841,6 +951,7 @@ Model {
 	  Name			  "in_1"
 	  SID			  "163"
 	  Position		  [25, 90, 45, 110]
+	  ZOrder		  -1
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -848,6 +959,7 @@ Model {
 	  Name			  "in_2"
 	  SID			  "164"
 	  Position		  [15, 170, 35, 190]
+	  ZOrder		  -2
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
@@ -857,6 +969,7 @@ Model {
 	  SID			  "165"
 	  Ports			  [1, 2]
 	  Position		  [240, 81, 280, 114]
+	  ZOrder		  -3
 	  Outputs		  "[U.Number B.Measurements]"
 	}
 	Block {
@@ -865,6 +978,7 @@ Model {
 	  SID			  "166"
 	  Ports			  [2, 1]
 	  Position		  [85, 131, 115, 164]
+	  ZOrder		  -4
 	  Inputs		  "[U.Number B.Setpoints]"
 	}
 	Block {
@@ -873,32 +987,29 @@ Model {
 	  SID			  "167"
 	  Ports			  [1]
 	  Position		  [75, 20, 170, 40]
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
+	  ZOrder		  -5
 	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  MaskType		  "To File DHV"
-	  MaskPromptString	  "Naam van bestand"
-	  MaskStyleString	  "edit"
-	  MaskVariables		  "naam=@1;"
-	  MaskTunableValueString  "on"
-	  MaskEnableString	  "on"
-	  MaskVisibilityString	  "on"
-	  MaskToolTipString	  "on"
-	  MaskInitialization	  "set_param([gcb '/To File'],'Filename',naam);"
-	  MaskDisplay		  "disp(naam)"
-	  MaskIconFrame		  on
-	  MaskIconOpaque	  on
-	  MaskIconRotate	  "port"
-	  MaskPortRotate	  "default"
-	  MaskIconUnits		  "autoscale"
-	  MaskValueString	  "[filenaam(1:length(filenaam)-4) '_in.sti']"
+	  Object {
+	    $PropName		    "MaskObject"
+	    $ObjectID		    17
+	    $ClassName		    "Simulink.Mask"
+	    Type		    "To File DHV"
+	    Initialization	    "set_param([gcb '/To File'],'Filename',naam);"
+	    Display		    "disp(naam)"
+	    IconRotate		    "port"
+	    Object {
+	      $PropName		      "Parameters"
+	      $ObjectID		      18
+	      $ClassName	      "Simulink.MaskParameter"
+	      Type		      "edit"
+	      Name		      "naam"
+	      Prompt		      "Naam van bestand"
+	      Value		      "[filenaam(1:length(filenaam)-4) '_in.sti']"
+	    }
+	  }
 	  System {
 	    Name		    "To File DHV"
-	    Location		    [210, 96, 398, 187]
+	    Location		    [180, 52, 424, 327]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -916,6 +1027,7 @@ Model {
 	      Name		      "In1"
 	      SID		      "168"
 	      Position		      [15, 43, 45, 57]
+	      ZOrder		      -1
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
@@ -924,10 +1036,12 @@ Model {
 	      SID		      "169"
 	      Ports		      [1]
 	      Position		      [85, 35, 145, 65]
+	      ZOrder		      -2
 	      Filename		      "./StimelaData/Packed_column_aerator_in.sti"
 	      MatrixName	      "torbk2in"
 	    }
 	    Line {
+	      ZOrder		      1
 	      SrcBlock		      "In1"
 	      SrcPort		      1
 	      DstBlock		      "To File"
@@ -941,32 +1055,29 @@ Model {
 	  SID			  "170"
 	  Ports			  [1]
 	  Position		  [330, 30, 425, 50]
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
+	  ZOrder		  -6
 	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  MaskType		  "To File DHV"
-	  MaskPromptString	  "Naam van bestand"
-	  MaskStyleString	  "edit"
-	  MaskVariables		  "naam=@1;"
-	  MaskTunableValueString  "on"
-	  MaskEnableString	  "on"
-	  MaskVisibilityString	  "on"
-	  MaskToolTipString	  "on"
-	  MaskInitialization	  "set_param([gcb '/To File'],'Filename',naam);"
-	  MaskDisplay		  "disp(naam)"
-	  MaskIconFrame		  on
-	  MaskIconOpaque	  on
-	  MaskIconRotate	  "port"
-	  MaskPortRotate	  "default"
-	  MaskIconUnits		  "autoscale"
-	  MaskValueString	  "[filenaam(1:length(filenaam)-4) '_out.sti']"
+	  Object {
+	    $PropName		    "MaskObject"
+	    $ObjectID		    19
+	    $ClassName		    "Simulink.Mask"
+	    Type		    "To File DHV"
+	    Initialization	    "set_param([gcb '/To File'],'Filename',naam);"
+	    Display		    "disp(naam)"
+	    IconRotate		    "port"
+	    Object {
+	      $PropName		      "Parameters"
+	      $ObjectID		      20
+	      $ClassName	      "Simulink.MaskParameter"
+	      Type		      "edit"
+	      Name		      "naam"
+	      Prompt		      "Naam van bestand"
+	      Value		      "[filenaam(1:length(filenaam)-4) '_out.sti']"
+	    }
+	  }
 	  System {
 	    Name		    "To File DHV1"
-	    Location		    [216, 96, 404, 187]
+	    Location		    [186, 52, 430, 327]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -984,6 +1095,7 @@ Model {
 	      Name		      "In1"
 	      SID		      "171"
 	      Position		      [15, 43, 45, 57]
+	      ZOrder		      -1
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
@@ -992,10 +1104,12 @@ Model {
 	      SID		      "172"
 	      Ports		      [1]
 	      Position		      [85, 35, 145, 65]
+	      ZOrder		      -2
 	      Filename		      "./StimelaData/Packed_column_aerator_out.sti"
 	      MatrixName	      "torbk2out"
 	    }
 	    Line {
+	      ZOrder		      1
 	      SrcBlock		      "In1"
 	      SrcPort		      1
 	      DstBlock		      "To File"
@@ -1009,32 +1123,29 @@ Model {
 	  SID			  "173"
 	  Ports			  [1]
 	  Position		  [335, 165, 430, 185]
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
+	  ZOrder		  -7
 	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  MaskType		  "To File DHV"
-	  MaskPromptString	  "Naam van bestand"
-	  MaskStyleString	  "edit"
-	  MaskVariables		  "naam=@1;"
-	  MaskTunableValueString  "on"
-	  MaskEnableString	  "on"
-	  MaskVisibilityString	  "on"
-	  MaskToolTipString	  "on"
-	  MaskInitialization	  "set_param([gcb '/To File'],'Filename',naam);"
-	  MaskDisplay		  "disp(naam)"
-	  MaskIconFrame		  on
-	  MaskIconOpaque	  on
-	  MaskIconRotate	  "port"
-	  MaskPortRotate	  "default"
-	  MaskIconUnits		  "autoscale"
-	  MaskValueString	  "[filenaam(1:length(filenaam)-4) '_EM.sti']"
+	  Object {
+	    $PropName		    "MaskObject"
+	    $ObjectID		    21
+	    $ClassName		    "Simulink.Mask"
+	    Type		    "To File DHV"
+	    Initialization	    "set_param([gcb '/To File'],'Filename',naam);"
+	    Display		    "disp(naam)"
+	    IconRotate		    "port"
+	    Object {
+	      $PropName		      "Parameters"
+	      $ObjectID		      22
+	      $ClassName	      "Simulink.MaskParameter"
+	      Type		      "edit"
+	      Name		      "naam"
+	      Prompt		      "Naam van bestand"
+	      Value		      "[filenaam(1:length(filenaam)-4) '_EM.sti']"
+	    }
+	  }
 	  System {
 	    Name		    "To File DHV2"
-	    Location		    [210, 94, 398, 185]
+	    Location		    [180, 52, 424, 327]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -1052,6 +1163,7 @@ Model {
 	      Name		      "In1"
 	      SID		      "174"
 	      Position		      [15, 43, 45, 57]
+	      ZOrder		      -1
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
@@ -1060,10 +1172,12 @@ Model {
 	      SID		      "175"
 	      Ports		      [1]
 	      Position		      [85, 35, 145, 65]
+	      ZOrder		      -2
 	      Filename		      "./StimelaData/Packed_column_aerator_EM.sti"
 	      MatrixName	      "torbk2EM"
 	    }
 	    Line {
+	      ZOrder		      1
 	      SrcBlock		      "In1"
 	      SrcPort		      1
 	      DstBlock		      "To File"
@@ -1077,32 +1191,29 @@ Model {
 	  SID			  "176"
 	  Ports			  [1]
 	  Position		  [90, 210, 185, 230]
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
+	  ZOrder		  -8
 	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  MaskType		  "To File DHV"
-	  MaskPromptString	  "Naam van bestand"
-	  MaskStyleString	  "edit"
-	  MaskVariables		  "naam=@1;"
-	  MaskTunableValueString  "on"
-	  MaskEnableString	  "on"
-	  MaskVisibilityString	  "on"
-	  MaskToolTipString	  "on"
-	  MaskInitialization	  "set_param([gcb '/To File'],'Filename',naam);"
-	  MaskDisplay		  "disp(naam)"
-	  MaskIconFrame		  on
-	  MaskIconOpaque	  on
-	  MaskIconRotate	  "port"
-	  MaskPortRotate	  "default"
-	  MaskIconUnits		  "autoscale"
-	  MaskValueString	  "[filenaam(1:length(filenaam)-4) '_ES.sti']"
+	  Object {
+	    $PropName		    "MaskObject"
+	    $ObjectID		    23
+	    $ClassName		    "Simulink.Mask"
+	    Type		    "To File DHV"
+	    Initialization	    "set_param([gcb '/To File'],'Filename',naam);"
+	    Display		    "disp(naam)"
+	    IconRotate		    "port"
+	    Object {
+	      $PropName		      "Parameters"
+	      $ObjectID		      24
+	      $ClassName	      "Simulink.MaskParameter"
+	      Type		      "edit"
+	      Name		      "naam"
+	      Prompt		      "Naam van bestand"
+	      Value		      "[filenaam(1:length(filenaam)-4) '_ES.sti']"
+	    }
+	  }
 	  System {
 	    Name		    "To File DHV4"
-	    Location		    [216, 96, 404, 187]
+	    Location		    [186, 52, 430, 327]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -1120,6 +1231,7 @@ Model {
 	      Name		      "In1"
 	      SID		      "177"
 	      Position		      [15, 43, 45, 57]
+	      ZOrder		      -1
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
@@ -1128,10 +1240,12 @@ Model {
 	      SID		      "178"
 	      Ports		      [1]
 	      Position		      [85, 35, 145, 65]
+	      ZOrder		      -2
 	      Filename		      "./StimelaData/Packed_column_aerator_ES.sti"
 	      MatrixName	      "torbk2ES"
 	    }
 	    Line {
+	      ZOrder		      1
 	      SrcBlock		      "In1"
 	      SrcPort		      1
 	      DstBlock		      "To File"
@@ -1145,15 +1259,16 @@ Model {
 	  SID			  "179"
 	  Ports			  [1, 1]
 	  Position		  [155, 90, 205, 110]
+	  ZOrder		  -9
 	  FunctionName		  "torbk2_s"
 	  Parameters		  "B,x0,U,P"
-	  EnableBusSupport	  off
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "out_1"
 	  SID			  "180"
 	  Position		  [400, 80, 420, 100]
+	  ZOrder		  -10
 	  IconDisplay		  "Port number"
 	  InitialOutput		  "0"
 	}
@@ -1162,11 +1277,13 @@ Model {
 	  Name			  "out_2"
 	  SID			  "181"
 	  Position		  [405, 120, 425, 140]
+	  ZOrder		  -11
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	  InitialOutput		  "0"
 	}
 	Line {
+	  ZOrder		  1
 	  SrcBlock		  "Mux"
 	  SrcPort		  1
 	  Points		  [0, -50]
@@ -1174,65 +1291,78 @@ Model {
 	  DstPort		  1
 	}
 	Line {
+	  ZOrder		  2
 	  SrcBlock		  "in_2"
 	  SrcPort		  1
 	  Points		  [0, 0; 10, 0]
 	  Branch {
+	    ZOrder		    3
 	    Points		    [0, 40]
 	    DstBlock		    "To File DHV4"
 	    DstPort		    1
 	  }
 	  Branch {
+	    ZOrder		    4
 	    Points		    [5, 0; 0, -25]
 	    DstBlock		    "Mux"
 	    DstPort		    2
 	  }
 	}
 	Line {
+	  ZOrder		  5
 	  SrcBlock		  "torbk2"
 	  SrcPort		  1
 	  DstBlock		  "Demux"
 	  DstPort		  1
 	}
 	Line {
+	  ZOrder		  6
 	  SrcBlock		  "Demux"
 	  SrcPort		  1
 	  Points		  [0, 0; 25, 0]
 	  Branch {
+	    ZOrder		    7
 	    DstBlock		    "out_1"
 	    DstPort		    1
 	  }
 	  Branch {
+	    ZOrder		    8
 	    Points		    [0, -50]
 	    DstBlock		    "To File DHV1"
 	    DstPort		    1
 	  }
 	}
 	Line {
+	  ZOrder		  9
 	  SrcBlock		  "Demux"
 	  SrcPort		  2
 	  Points		  [0, 0; 25, 0]
 	  Branch {
+	    ZOrder		    10
 	    Points		    [80, 0]
 	    DstBlock		    "out_2"
 	    DstPort		    1
 	  }
 	  Branch {
+	    ZOrder		    11
 	    Points		    [0, 70]
 	    DstBlock		    "To File DHV2"
 	    DstPort		    1
 	  }
 	}
 	Line {
+	  ZOrder		  12
 	  SrcBlock		  "in_1"
 	  SrcPort		  1
 	  Points		  [5, 0]
 	  Branch {
+	    ZOrder		    13
 	    Points		    [0, 40]
 	    DstBlock		    "Mux"
 	    DstPort		    1
 	  }
 	  Branch {
+	    ZOrder		    14
 	    Points		    [0, -70]
 	    DstBlock		    "To File DHV"
 	    DstPort		    1
@@ -1244,28 +1374,29 @@ Model {
       BlockType		      SubSystem
       Name		      "Water quality\nparameters"
       SID		      "182"
-      Description	      "The water flow and the water quality data must be filled out in the 'Water quality parameters' block. Each project must start with a 'Water quality parameters' block."
+      Description	      "The water flow and the water quality data must be filled out in the 'Water quality parameters"
+      "' block. Each project must start with a 'Water quality parameters' block."
       Ports		      [0, 1]
       Position		      [140, 184, 205, 226]
-      OpenFcn		      "filenaam='./StimelaData/Water_qual_param.mat';                        \nst_ParameterInput('init',gcb,filenaam,'invruw');"
+      ZOrder		      -4
+      OpenFcn		      "filenaam='./StimelaData/Water_qual_param.mat';                        \nst_ParameterInput('init'"
+      ",gcb,filenaam,'invruw');"
       ShowPortLabels	      "none"
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      RTWSystemCode	      "Auto"
-      FunctionWithSeparateData off
-      Opaque		      off
       RequestExecContextInheritance off
-      MaskHideContents	      off
-      MaskInitialization      "filenaam='./StimelaData/Water_qual_param.mat';\n\n[Pn,Fn,Fext]=Fileprop(filenaam);\n\nerrstr = st_UniqName(filenaam,'filenaam=''','SubSystem','OpenFcn');\nif errstr, error([errstr 'The filename \"' filenaam '\" is already in use. Choose a different filename.']), end\n\nP = invruw_p(filenaam);\n[B,x0,U]=invruw_i(filenaam);\n"
-      MaskDisplay	      "plot(0,0,100,100,[80 100],[ 50 50],[80 100],[ 55 55],[20 80 80 20 20],[10 10 90  90 10]);\ndisp('')\ntext(50,50,'invruw', 'horizontalAlignment', 'center', 'verticalAlignment', 'middle');\ntext(50,0,Fn, 'horizontalAlignment', 'center', 'verticalAlignment', 'base');"
-      MaskIconFrame	      on
-      MaskIconOpaque	      on
-      MaskIconRotate	      "none"
-      MaskPortRotate	      "default"
-      MaskIconUnits	      "autoscale"
+      Object {
+	$PropName		"MaskObject"
+	$ObjectID		25
+	$ClassName		"Simulink.Mask"
+	Initialization		"filenaam='./StimelaData/Water_qual_param.mat';\n\n[Pn,Fn,Fext]=Fileprop(filenaam);\n\nerrstr = st_Un"
+	"iqName(filenaam,'filenaam=''','SubSystem','OpenFcn');\nif errstr, error([errstr 'The filename \"' filenaam '\" is alr"
+	"eady in use. Choose a different filename.']), end\n\nP = invruw_p(filenaam);\n[B,x0,U]=invruw_i(filenaam);\n"
+	Display			"plot(0,0,100,100,[80 100],[ 50 50],[80 100],[ 55 55],[20 80 80 20 20],[10 10 90  90 10]);\ndisp('')\ntext("
+	"50,50,'invruw', 'horizontalAlignment', 'center', 'verticalAlignment', 'middle');\ntext(50,0,Fn, 'horizontalAlignment'"
+	", 'center', 'verticalAlignment', 'base');"
+      }
       System {
 	Name			"Water quality\nparameters"
-	Location		[60, 74, 598, 507]
+	Location		[30, 52, 624, 669]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1284,32 +1415,29 @@ Model {
 	  SID			  "183"
 	  Ports			  [1]
 	  Position		  [160, 105, 255, 125]
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
+	  ZOrder		  -1
 	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  MaskType		  "To File DHV"
-	  MaskPromptString	  "Naam van bestand"
-	  MaskStyleString	  "edit"
-	  MaskVariables		  "naam=@1;"
-	  MaskTunableValueString  "on"
-	  MaskEnableString	  "on"
-	  MaskVisibilityString	  "on"
-	  MaskToolTipString	  "on"
-	  MaskInitialization	  "set_param([gcb '/To File'],'Filename',naam);"
-	  MaskDisplay		  "disp(naam)"
-	  MaskIconFrame		  on
-	  MaskIconOpaque	  on
-	  MaskIconRotate	  "port"
-	  MaskPortRotate	  "default"
-	  MaskIconUnits		  "autoscale"
-	  MaskValueString	  "[filenaam(1:length(filenaam)-4) '_out.sti']"
+	  Object {
+	    $PropName		    "MaskObject"
+	    $ObjectID		    26
+	    $ClassName		    "Simulink.Mask"
+	    Type		    "To File DHV"
+	    Initialization	    "set_param([gcb '/To File'],'Filename',naam);"
+	    Display		    "disp(naam)"
+	    IconRotate		    "port"
+	    Object {
+	      $PropName		      "Parameters"
+	      $ObjectID		      27
+	      $ClassName	      "Simulink.MaskParameter"
+	      Type		      "edit"
+	      Name		      "naam"
+	      Prompt		      "Naam van bestand"
+	      Value		      "[filenaam(1:length(filenaam)-4) '_out.sti']"
+	    }
+	  }
 	  System {
 	    Name		    "To File DHV1"
-	    Location		    [216, 96, 404, 187]
+	    Location		    [186, 52, 430, 327]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -1327,6 +1455,7 @@ Model {
 	      Name		      "In1"
 	      SID		      "184"
 	      Position		      [15, 43, 45, 57]
+	      ZOrder		      -1
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
@@ -1335,10 +1464,12 @@ Model {
 	      SID		      "185"
 	      Ports		      [1]
 	      Position		      [85, 35, 145, 65]
+	      ZOrder		      -2
 	      Filename		      "./StimelaData/Water_qual_param_out.sti"
 	      MatrixName	      "invruwout"
 	    }
 	    Line {
+	      ZOrder		      1
 	      SrcBlock		      "In1"
 	      SrcPort		      1
 	      DstBlock		      "To File"
@@ -1352,27 +1483,31 @@ Model {
 	  SID			  "186"
 	  Ports			  [0, 1]
 	  Position		  [60, 60, 110, 80]
+	  ZOrder		  -2
 	  FunctionName		  "invruw_s"
 	  Parameters		  "B,x0,U,P"
-	  EnableBusSupport	  off
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "out_1"
 	  SID			  "187"
 	  Position		  [180, 60, 200, 80]
+	  ZOrder		  -3
 	  IconDisplay		  "Port number"
 	  InitialOutput		  "0"
 	}
 	Line {
+	  ZOrder		  1
 	  SrcBlock		  "invruw"
 	  SrcPort		  1
 	  Points		  [10, 0]
 	  Branch {
+	    ZOrder		    2
 	    DstBlock		    "out_1"
 	    DstPort		    1
 	  }
 	  Branch {
+	    ZOrder		    3
 	    Points		    [0, 45]
 	    DstBlock		    "To File DHV1"
 	    DstPort		    1
@@ -1386,24 +1521,20 @@ Model {
       SID		      "23"
       Ports		      []
       Position		      [480, 180, 520, 236]
+      ZOrder		      -5
       OpenFcn		      "plotStimela2"
       ShowPortLabels	      "none"
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      RTWSystemCode	      "Auto"
-      FunctionWithSeparateData off
-      Opaque		      off
       RequestExecContextInheritance off
-      MaskHideContents	      off
-      MaskDisplay	      "plot(0,0,100,100,[80,20,20],[20,20,80],[80,69,60,52,45,39,33,28,24,20],[65,65,64,61,57,52,45,37,30,20])\ndisp('');\ntext(100,100,'Stimela', 'horizontalAlignment', 'right', 'verticalAlignment', 'top');\n"
-      MaskIconFrame	      on
-      MaskIconOpaque	      on
-      MaskIconRotate	      "none"
-      MaskPortRotate	      "default"
-      MaskIconUnits	      "autoscale"
+      Object {
+	$PropName		"MaskObject"
+	$ObjectID		28
+	$ClassName		"Simulink.Mask"
+	Display			"plot(0,0,100,100,[80,20,20],[20,20,80],[80,69,60,52,45,39,33,28,24,20],[65,65,64,61,57,52,45,37,30,20])\nd"
+	"isp('');\ntext(100,100,'Stimela', 'horizontalAlignment', 'right', 'verticalAlignment', 'top');\n"
+      }
       System {
 	Name			"dhvplt"
-	Location		[8, 74, 1028, 752]
+	Location		[16, 52, 1092, 914]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1419,18 +1550,24 @@ Model {
 	Annotation {
 	  SID			  "189"
 	  Name			  "plotten"
-	  Position		  [77, 57]
+	  Position		  [77, 59, 112, 74]
+	  InternalMargins	  [0, 0, 0, 0]
+	  FixedHeight		  off
+	  FixedWidth		  off
 	  VerticalAlignment	  "top"
+	  ZOrder		  -1
 	}
       }
     }
     Line {
+      ZOrder		      1
       SrcBlock		      "Water quality\nparameters"
       SrcPort		      1
       DstBlock		      "Packed column aerator"
       DstPort		      1
     }
     Line {
+      ZOrder		      2
       SrcBlock		      "Fresh air flow"
       SrcPort		      1
       Points		      [25, 0; 0, -15]
@@ -1440,44 +1577,71 @@ Model {
     Annotation {
       SID		      "190"
       Name		      "Packed column aerator"
-      Position		      [262, 27]
+      Position		      [351, 51, 530, 73]
+      InternalMargins	      [0, 0, 0, 0]
+      FixedHeight	      off
+      FixedWidth	      off
       VerticalAlignment	      "top"
+      ZOrder		      -1
       FontName		      "Arial"
       FontSize		      16
       FontWeight	      "bold"
     }
     Annotation {
       SID		      "191"
-      Name		      "  2. Double click the block \"Packed column aerator\", for entering the size of the packed-column aerator"
-      Position		      [302, 92]
+      Name		      "  2. Double click the block \"Packed column aerator\", for entering the size of the packed-column a"
+      "erator"
+      Position		      [525, 109, 1005, 124]
+      InternalMargins	      [0, 0, 0, 0]
+      FixedHeight	      off
+      FixedWidth	      off
       VerticalAlignment	      "top"
+      ZOrder		      -2
       FontName		      "Arial"
     }
     Annotation {
       SID		      "192"
       Name		      " 3. Click on the black triangle in the taskbar in order to start the simulation   "
-      Position		      [242, 107]
+      Position		      [405, 124, 760, 139]
+      InternalMargins	      [0, 0, 0, 0]
+      FixedHeight	      off
+      FixedWidth	      off
       VerticalAlignment	      "top"
+      ZOrder		      -3
       FontName		      "Arial"
     }
     Annotation {
       SID		      "193"
-      Name		      "  4. Double click the block \"Graphical output packed column aerator\", for visualization of the simulation results     "
-      Position		      [327, 122]
+      Name		      "  4. Double click the block \"Graphical output packed column aerator\", for visualization of the si"
+      "mulation results     "
+      Position		      [571, 139, 1102, 154]
+      InternalMargins	      [0, 0, 0, 0]
+      FixedHeight	      off
+      FixedWidth	      off
       VerticalAlignment	      "top"
+      ZOrder		      -4
       FontName		      "Arial"
     }
     Annotation {
       SID		      "194"
-      Name		      "1. Double click the block \"Water quality parameters\", for entering the flow and water quality data      "
-      Position		      [302, 77]
+      Name		      "1. Double click the block \"Water quality parameters\", for entering the flow and water quality dat"
+      "a      "
+      Position		      [519, 94, 989, 109]
+      InternalMargins	      [0, 0, 0, 0]
+      FixedHeight	      off
+      FixedWidth	      off
       VerticalAlignment	      "top"
+      ZOrder		      -5
       FontName		      "Arial"
     }
     Annotation {
       SID		      "195"
       Name		      "5. Double click the block \"dhvplt\", for visualization of the water quality parameters in time"
-      Position		      [278, 144]
+      Position		      [278, 146, 698, 161]
+      InternalMargins	      [0, 0, 0, 0]
+      FixedHeight	      off
+      FixedWidth	      off
+      ZOrder		      -6
     }
   }
 }
